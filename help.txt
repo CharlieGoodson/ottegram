@@ -1,1 +1,4 @@
 browser-sync start --server --files "stylesheets/*.css, *.html"
+
+git remote add origin https://github.com/CharlieGoodson/ottegram.git
+git push -u origin master
