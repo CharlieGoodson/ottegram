@@ -33,6 +33,7 @@ a {
   background: white;
   font-family: lakeshore;
   font-size: 37px;
+  line-height: 48px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -43,7 +44,7 @@ a {
   display: flex;
   justify-content: space-between;
   list-style: none;
-  padding: 0;
+  padding: 20px 0;
   white-space: nowrap;
   overflow-x: auto;
 }
@@ -55,6 +56,11 @@ a {
   min-width: 120px;
   max-width: 120px;
   height: fit-content;
+  transition: transform 0.4s ease-in-out;
+}
+
+.thumbnail-item:hover {
+  transform: scale(1.2);
 }
 
 .thumbnail-image {
@@ -96,6 +102,12 @@ a {
 .detail-image-frame {
   position: relative;
   text-align: center;
+  transition: transform 700ms ease-out;
+}
+
+.is-tiny {
+  transform: scale(0.001);
+  transition: transform 0ms;
 }
 
 .detail-image-title {
@@ -136,6 +148,7 @@ a {
     flex-direction: column;
     order: 0;
     margin-left: 20px;
+    padding: 0 35px;
   }
 
   .thumbnail-item {
