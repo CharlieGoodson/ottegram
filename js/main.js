@@ -3,6 +3,8 @@
 const DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 const DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 const THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
+const HIDDEN_DETAIL_CLASS = 'hidden-detail';
+const ESC_KEY = 27;
 
 function imageFromThumb(thumbnail) {
     return thumbnail.getAttribute('data-image-url');
@@ -28,6 +30,7 @@ function addThumbClickHandler(thumbnail) {
     thumbnail.addEventListener('click', (event) => {
         event.preventDefault();
         setDetailsFromThumb(thumbnail);
+        showDetails();
     });
 }
 
@@ -37,9 +40,27 @@ function getThumbnailsArray() {
     return thumbnailArray;
 }
 
+function hideDetail() {
+    document.body.classList.add(HIDDEN_DETAIL_CLASS);
+}
+
+function showDetails() {
+    document.body.classList.remove(HIDDEN_DETAIL_CLASS);
+}
+
+function addKeyPressHandler() {
+    document.body.addEventListener('keyup', event => {
+        event.preventDefault();
+        if (event.keyCode === ESC_KEY) {
+            hideDetail();
+        }
+    });
+}
+
 function initializeEvents() {
     const thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
+    addKeyPressHandler();
 }
 
 initializeEvents();
